@@ -20,12 +20,24 @@ namespace Application.Services.Implementation
 
         public void CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _unitOfWork.Product.Add(product);
+            _unitOfWork.Save();
         }
 
         public bool DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Product? product = _unitOfWork.Product.Get(p => p.ProductID == id);
+                _unitOfWork.Product.Remove(product);
+                _unitOfWork.Save();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
         }
 
         public IEnumerable<Product> GetAllProducts()
@@ -33,7 +45,7 @@ namespace Application.Services.Implementation
             return _unitOfWork.Product.List();
         }
 
-        public Product GetProductById(int id)
+        public Product? GetProductById(int id)
         {
             return _unitOfWork.Product.Get(p => p.ProductID == id);
         }

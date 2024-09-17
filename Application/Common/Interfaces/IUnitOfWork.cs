@@ -10,5 +10,6 @@ namespace Application.Common.Interfaces
     {
         IProductRepository Product {  get; }
         ICategoryRepository Category { get; }
+        void Save();
     }
 }

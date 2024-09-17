@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+}
+@inject ICategoryService categoryService;
+
+<div class="box box-primary">
+    <div class="box-body">
+        <form id="formSearch" action="" method="get">
+            <div class="input-group">
+                <input type="hidden" name="" value="" />
+
+                <input name="searchValue"
+                       type="text"
+                       class="form-control"
+                       placeholder="Nhập tên sản phẩm cần tìm"
+                       value=""
+                       autofocus />
+
+                <div class="input-group-btn">
+                    <button class="btn btn-info" type="submit">
+                        <i class="fa fa-search"><</i>
+                    </button>
+
+                    <a asp-controller="Product" asp-action="Create" class="btn btn-primary" style="margin-left:5px">
+                        <i class="fa fa-plus"></i> Bổ sung
+                    </a>
+                </div>
+            </div>
+        </form>
+
+        <div>
+            <p style="margin-top:10px">
+                có <strong></strong> loại hàng trong tổng số <strong></strong> trang
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>Tên sản phẩm</th>
+                            <th>Mô tả</th>
+                            <th>Danh mục</th>
+                            <th>Giá bán</th>
+                            <th>Số lượng tồn</th>
+                            <th style="width:100px"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.ProductDescription</td>
+                                <td>@categoryService.GetCategoryById(item.CategoryID).CategoryName</td>
+                                <td>@item.Price.ToString("N0") &#x20AB;</td>
+                                <td>@item.StockQuantity</td>
+                                <td class="text-right">
+                                    <a href="" class="btn btn-xs btn-info" style="background-color: gray">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <a asp-controller="Product" asp-action="Update" asp-route-id="@item.ProductID" class="btn btn-xs btn-info">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.ProductID" class="btn btn-xs btn-danger">
+                                        <i class="fa fa-remove"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

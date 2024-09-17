@@ -20,5 +20,9 @@ namespace Infrastructure.Repository
             Product = new ProductRepository(_context);
             Category = new CategoryRepository(_context);
         }
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }
