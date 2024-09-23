@@ -12,12 +12,14 @@ namespace Infrastructure.Repository
     {
         private readonly ApplicationDbContext _context;
         public IProductRepository Product { get; private set; }
+        public IProductColorRepository ProductColor { get; private set; }
         public ICategoryRepository Category { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             Product = new ProductRepository(_context);
+            ProductColor = new ProductColorRepository(_context);
             Category = new CategoryRepository(_context);
         }
         public void Save()

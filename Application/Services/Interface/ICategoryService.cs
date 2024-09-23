@@ -9,7 +9,7 @@ namespace Application.Services.Interface
 {
     public interface ICategoryService
     {
-        IEnumerable<Category> GetAllCategories();
+        IEnumerable<Category>? GetAllCategories();
         Category GetCategoryById(int id);
         void CreateCategory(Category category);
         void UpdateCategory(Category category);

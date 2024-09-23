@@ -27,7 +27,7 @@ namespace Application.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Category> GetAllCategories()
+        public IEnumerable<Category>? GetAllCategories()
         {
             return _unitOfWork.Category.List();
         }

@@ -1,8 +1,11 @@
-﻿using Application.Services.Interface;
+﻿using Application.Common.Interfaces;
+using Application.Services.Interface;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Web.AppCodes;
 using Web.Areas.Admin.ViewModel;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -11,6 +14,7 @@ namespace Web.Areas.Admin.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IUnitOfWork unitOfWork;
         public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
@@ -66,16 +70,37 @@ namespace Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Product product)
+        public IActionResult Update(Product product, IFormFile? photo)
         {
+            if (photo != null)
+            {
+                string fileName = $"{DateTime.Now.Ticks}_{photo.FileName}"; //File name
+                string folder = Path.Combine(ApplicationContext.WebRootPath, @"assets\images\products"); //File Path
+                string filePath = Path.Combine(folder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    photo.CopyTo(stream);
+                }
+                product.ImageUrl = fileName;
+            }
+
             _productService.UpdateProduct(product);
             return RedirectToAction("Index");
-        }
 
+        }
         public IActionResult Delete(int id)
         {
             _productService.DeleteProduct(id);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult ProductColor(int id, string method="", int colorId)
+        {
+            switch (method)
+            {
+
+            }
         }
     }
 }

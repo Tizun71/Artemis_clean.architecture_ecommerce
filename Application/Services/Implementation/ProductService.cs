@@ -53,6 +53,7 @@ namespace Application.Services.Implementation
         public void UpdateProduct(Product product)
         {
             _unitOfWork.Product.Update(product);
+            _unitOfWork.Save();
         }
     }
 }

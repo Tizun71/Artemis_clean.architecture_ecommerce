@@ -1824,12 +1824,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Customer\Data\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -6101,6 +6098,21 @@
     <None Include="wwwroot\themes\Admin\bower_components\select2\src\scss\_dropdown.scss" />
     <None Include="wwwroot\themes\Admin\bower_components\select2\src\scss\_multiple.scss" />
     <None Include="wwwroot\themes\Admin\bower_components\select2\src\scss\_single.scss" />
+    <None Include="wwwroot\themes\Customer\images\bag.svg" />
+    <None Include="wwwroot\themes\Customer\images\cart.svg" />
+    <None Include="wwwroot\themes\Customer\images\cross.svg" />
+    <None Include="wwwroot\themes\Customer\images\dots-green.svg" />
+    <None Include="wwwroot\themes\Customer\images\dots-light.svg" />
+    <None Include="wwwroot\themes\Customer\images\dots-yellow.svg" />
+    <None Include="wwwroot\themes\Customer\images\envelope-outline.svg" />
+    <None Include="wwwroot\themes\Customer\images\return.svg" />
+    <None Include="wwwroot\themes\Customer\images\support.svg" />
+    <None Include="wwwroot\themes\Customer\images\truck.svg" />
+    <None Include="wwwroot\themes\Customer\images\user.svg" />
+    <None Include="wwwroot\themes\Customer\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\themes\Customer\js\custom.js" />
+    <None Include="wwwroot\themes\Customer\js\tiny-slider.js" />
+    <None Include="wwwroot\themes\Customer\scss\style.scss" />
   </ItemGroup>
 
   <ItemGroup>
@@ -6109,6 +6121,11 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Delete.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

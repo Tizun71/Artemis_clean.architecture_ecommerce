@@ -1,4 +1,4 @@
-﻿namespace Web.ViewModel
+﻿namespace Web.Areas.Customer.Models.ViewModel
 {
     public class CategoryMenuViewModel
     {

@@ -9,6 +9,7 @@ namespace Application.Common.Interfaces
     public interface IUnitOfWork
     {
         IProductRepository Product {  get; }
+        IProductColorRepository ProductColor { get; }
         ICategoryRepository Category { get; }
         void Save();
     }

@@ -23,5 +23,6 @@ namespace Domain.Entities
         public Category Category { get; set; }
         [ForeignKey("Category")]
         public int CategoryID { get; set; }
+        public ICollection<ProductColor> ProductColors { get; set; }
     }
 }
