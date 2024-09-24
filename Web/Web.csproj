@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Product\Color.cshtml" />
     <Content Remove="Areas\Admin\Views\Product\Delete.cshtml" />
   </ItemGroup>
 
@@ -1830,6 +1831,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\Views\Product\Color.cshtml" />
     <None Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <None Include="wwwroot\themes\Admin\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css.map" />
     <None Include="wwwroot\themes\Admin\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css.map" />
@@ -6120,12 +6122,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Color.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Delete.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Admin\Views\Product\Color.cshtml" />
   </ItemGroup>
 
 </Project>

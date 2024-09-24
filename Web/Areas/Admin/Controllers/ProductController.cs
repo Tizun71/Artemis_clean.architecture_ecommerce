@@ -14,11 +14,12 @@ namespace Web.Areas.Admin.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
-        private readonly IUnitOfWork unitOfWork;
-        public ProductController(IProductService productService, ICategoryService categoryService)
+        private readonly IProductColorService _productColorService;
+        public ProductController(IProductService productService, ICategoryService categoryService, IProductColorService productColorService)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _productColorService = productColorService;
         }
         public IActionResult Index()
         {
@@ -91,15 +92,28 @@ namespace Web.Areas.Admin.Controllers
         }
         public IActionResult Delete(int id)
         {
+            return Json(new { id });
             _productService.DeleteProduct(id);
             return RedirectToAction("Index");
         }
 
-        public IActionResult ProductColor(int id, string method="", int colorId)
+		public IActionResult Color(int id, string method = "", int colorId=0)
         {
             switch (method)
             {
-
+                case "add":
+/*                    _productColorService.CreateProductColor(productColor);
+                    return RedirectToAction("Update", new { id = id });*/
+                case "update":
+                    var pcolor = _productColorService.GetProductColorById(colorId);
+                    if (pcolor != null)
+                        _productColorService.UpdateProductColor(pcolor);
+                    return RedirectToAction("Update", new {id = id});
+                case "delete":
+                    _productColorService.DeleteProductColor(colorId);
+                    return RedirectToAction("Update", new {id = id});
+				default:
+                    return RedirectToAction("Index");
             }
         }
     }
